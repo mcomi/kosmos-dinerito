@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>video-player</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="contratos" transform="translate(-587.000000, -1027.000000)" fill-rule="nonzero">
+            <g id="Group-10" transform="translate(587.000000, 1027.000000)">
+                <g id="video-player">
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#7383BF" x="1" y="1" width="28" height="22"></rect>
+                    <polygon id="Shape" fill="#FFFFFF" points="13 15 13 11.477 13 8 19 11.5"></polygon>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="1" y="1" width="5" height="5"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="1" y="6" width="5" height="5"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="1" y="12" width="5" height="6"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="1" y="18" width="5" height="5"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="24" y="1" width="5" height="5"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="24" y="6" width="5" height="5"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="24" y="12" width="5" height="6"></rect>
+                    <rect id="Rectangle-path" stroke="#424A60" stroke-width="2" fill="#556080" x="24" y="18" width="5" height="5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
