@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="">
+	<meta name="description" content="bx+ using webpack and bootstrap">
 	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, maximum-scale=1">
 
-	<title>Dinerito - Home</title>
+	<title>Dinerito - Lista de Solicitudes</title>
 
 	<!-- Disable tap highlight on IE -->
 	<meta name="msapplication-tap-highlight" content="no">
@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="css/bootstrap-table.min.css">
   <link rel="stylesheet" href="css/style.css">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -64,7 +65,7 @@
 			<div class="sidebar-header-profilepic">
 				<img src="img/profile.jpg" alt="">
 			</div>
-			<p>Buenas tardes Laura</p>
+			<p>Hola Laura</p>
 		</div>
 		<ul class="list-unstyled main-menu">
 
@@ -85,7 +86,7 @@
 
 </div> -->
 	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
+    <div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<!--Include your brand here-->
 
@@ -132,66 +133,57 @@
 	<div class="container home">
     <div class="row">
 
-      <div class="menu_credit_type col-xs-12 col-md-6">
-        <h3 class="section-header-home">NUEVA SOLICITUD</h3>
 
-        <div class="col-xs-3">
-					<a href="dependencia.html">
-	          <div class="icon-item">
-								<img src="img/icons/personal_credit.png" alt="">
-	          </div>
-					</a>
-          <p class="credit-text">Nómina</p>
-        </div>
-
-      </div>
-
-      <div class="col-xs-12 col-md-6">
-        <h3 class="section-header-home">CONSULTA DE ESTATUS</h3>
-        <div class="form-group padding-dekstop-col">
-          <label for="folio_usuario">Folio de usuario</label>
-          <input type="tel" class="form-control validate" id="folio_usuario">
-          <span class="input-success"></span>
-          <span class="input-error"></span>
-        </div>
-        <div>
-          <a href="estatus.html" class="btn btn-form nav-btn">Ingresar</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="row chart-row">
-			<div class="col-xs-12 col-md-6">
-				<div class="panel panel-border section-panel">
-					<div class="panel-heading">
-            VOLUMEN <a href="#">Ver más</a>
-          </div>
-					<div class="panel-body">
-						<canvas id="lineChart2" height="150"></canvas>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6">
-				<div class="panel panel-border section-panel">
-          <div class="panel-heading">
-            VOLUMEN <a href="#">Ver más</a>
-          </div>
-					<div class="panel-body">
-						<canvas id="lineChart" height="150"></canvas>
-					</div>
-				</div>
+			<div class="col-xs-12 scrollmenu">
+				<a href="#" data-type="dictaminada">Dictaminadas</a>
+				<a href="#" data-type="por-dictaminar">Por Dictaminar</a>
+				<a href="#" data-type="complemento">Complemento solicitado</a>
 			</div>
     </div>
 
 		<div class="row">
-			<div class="col-xs-12">
+      <div class="col-md-12">
+        <div class="filter-bar">
+
+          <div class="form-inline">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default">Filtrar</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Día</a></li>
+                <li><a href="#">Semana</a></li>
+                <li><a href="#">Mes</a></li>
+                <li><a href="#" id="date-filter">Por fecha</a></li>
+              </ul>
+            </div>
+            <div id="date-search" class="hidden">
+
+              <div class="form-group">
+                <label for="fecha_de">Desde</label>
+                <input type="text" data-custom-class="form-control validate" id="fecha_de" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="fecha_de">
+              </div>
+              <div class="form-group">
+                <label for="fecha_para">a</label>
+                <input type="text" data-custom-class="form-control validate" id="fecha_para" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="fecha_para">
+              </div>
+              <button type="submit" class="btn btn-default btn-form">Buscar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+			<div class="col-md-12">
 
 				<div class="panel panel-border section-panel">
 					<div class="panel-heading">
-						Solicitudes <a href="solicitudes.html">Ver todas</a>
+						<h4>Solicitudes</h4>
+
 					</div>
 					<div class="panel-body table-responsive">
-						<table class="table table-striped">
+						<table id="solicitudes" class="table table-striped">
 							<thead>
 								<tr>
 									<th>Folio</th>
@@ -218,6 +210,17 @@
 									<td><a href="detalles.html">Ver detalle</a></td>
 								</tr>
 								<tr>
+									<td>0022</td>
+									<td>Mariana Flores Romero</td>
+									<td>Aprobada</td>
+									<td>Coyoacán</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>05/07/2017</td>
+									<td>$40,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+                <tr>
 									<td>0021</td>
 									<td>Mariana Flores Romero</td>
 									<td>En proceso</td>
@@ -228,8 +231,96 @@
 									<td>$20,000</td>
 									<td><a href="detalles.html">Ver detalle</a></td>
 								</tr>
+								<tr>
+									<td>0022</td>
+									<td>Mariana Flores Romero</td>
+									<td>Aprobada</td>
+									<td>Coyoacán</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>05/07/2017</td>
+									<td>$40,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+                <tr>
+									<td>0021</td>
+									<td>Mariana Flores Romero</td>
+									<td>En proceso</td>
+									<td>Cuajimalpa</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>01/07/2017</td>
+									<td>$20,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+								<tr>
+									<td>0022</td>
+									<td>Mariana Flores Romero</td>
+									<td>Aprobada</td>
+									<td>Coyoacán</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>05/07/2017</td>
+									<td>$40,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+                <tr>
+									<td>0021</td>
+									<td>Mariana Flores Romero</td>
+									<td>En proceso</td>
+									<td>Cuajimalpa</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>01/07/2017</td>
+									<td>$20,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+								<tr>
+									<td>0022</td>
+									<td>Mariana Flores Romero</td>
+									<td>Aprobada</td>
+									<td>Coyoacán</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>05/07/2017</td>
+									<td>$40,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+                <tr>
+									<td>0021</td>
+									<td>Mariana Flores Romero</td>
+									<td>En proceso</td>
+									<td>Cuajimalpa</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>01/07/2017</td>
+									<td>$20,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
+								<tr>
+									<td>0022</td>
+									<td>Mariana Flores Romero</td>
+									<td>Aprobada</td>
+									<td>Coyoacán</td>
+									<td>Google</td>
+									<td>CS</td>
+									<td>05/07/2017</td>
+									<td>$40,000</td>
+									<td><a href="detalles.html">Ver detalle</a></td>
+								</tr>
 							</tbody>
 						</table>
+            <div class="col-md-6 col-md-offset-3 col-xs-12 center">
+              <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+              </ul>
+            </div>
 					</div>
 				</div>
 			</div>
@@ -271,6 +362,7 @@
   <script src="libs/bootstrap-datepicker.min.js"></script>
   <script src="libs/bootstrap-datepicker.es.min.js"></script>
   <script src="libs/bootstrap-editable.min.js"></script>
+  <script src="libs/bootstrap-table.min.js"></script>
   <script src="libs/cleave.min.js"></script>
   <script src="libs/cleave-phone.mx.js"></script>
   <script src="libs/swiper.min.js"></script>
@@ -280,8 +372,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
   <script src="js/index.js"></script>
-	<script src="js/home.js"></script>
-
+  <script src="js/solicitudes.js"></script>
 
 </body>
 

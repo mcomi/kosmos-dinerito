@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="bx+ using webpack and bootstrap">
+	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, maximum-scale=1">
 
 	<title>Dinerito - Simulador Créditos</title>
@@ -139,47 +139,60 @@
 			<div class="center">
 
 				<p>Para iniciar debe elegir la dependencia y capturar las percepciones libres</p>
-				<div class="menu_credit_type col-xs-12 col-md-10 col-md-offset-2">
-
-					<div class="col-xs-2">
-						<a href="simulador.html">
+				<div class="menu_credit_type col-xs-12 col-md-10 col-md-offset-1">
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="pemex" id="pemex" name="dependencia">
+						<label for="pemex">
 							<div class="icon-item">
 								<img src="img/icons/pemex.svg" alt="">
 							</div>
-						</a>
+						</label>
 						<p class="credit-text">PEMEX</p>
 					</div>
-					<div class="col-xs-2">
-						<a href="simulador.html">
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="ssap" id="ssap" name="dependencia">
+						<label for="ssap">
 							<div class="icon-item">
-								<img src="img/icons/sep.png" alt="">
+								<img src="img/icons/ssap.png" alt="">
 							</div>
-						</a>
-						<p class="credit-text">SSA PUEBLA E HIDALGO</p>
+						</label>
+						<p class="credit-text">SSA Puebla</p>
 					</div>
-					<div class="col-xs-2">
-						<a href="simulador.html">
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="ssah" id="ssah" name="dependencia">
+						<label for="ssah">
 							<div class="icon-item">
-								<img src="img/icons/pensionados.svg" alt="">
+								<img src="img/icons/ssah.png" alt="">
 							</div>
-						</a>
-						<p class="credit-text">UTP</p>
+						</label>
+						<p class="credit-text">SSA Hidalgo</p>
 					</div>
-					<div class="col-xs-2">
-						<a href="simulador.html">
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="gob_quer" id="gob_quer" name="dependencia">
+						<label for="gob_quer">
 							<div class="icon-item">
-								<img src="img/icons/imss.svg" alt="">
+								<img src="img/icons/gob_quer.png" alt="">
 							</div>
-						</a>
-						<p class="credit-text">GOB QUERETARO</p>
+						</label>
+						<p class="credit-text">Gob Querétaro</p>
 					</div>
-					<div class="col-xs-2">
-						<a href="simulador.html">
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="sepp" id="sepp" name="dependencia">
+						<label for="sepp">
+							<div class="icon-item">
+								<img src="img/icons/sepp.png" alt="">
+							</div>
+						</label>
+						<p class="credit-text">SEP Puebla</p>
+					</div>
+					<div class="col-xs-6 col-md-2">
+						<input type="radio" value="otra" id="otra" name="dependencia">
+						<label for="otra">
 							<div class="icon-item">
 								<img src="img/icons/otros.png" alt="">
 							</div>
-						</a>
-						<p class="credit-text">OTRO</p>
+						</label>
+						<p class="credit-text">OTRA</p>
 					</div>
 
 				</div>
@@ -187,24 +200,383 @@
 
 			<!-- Aqui inserto forma infonavit -->
 			<div class="col-xs-12">
-				<div class="form-group col-xs-12 col-md-8 col-md-offset-2 padding-dekstop-col">
+				<div id="otraDependencia" class="form-group col-xs-12 col-md-10 col-md-offset-1 padding-dekstop-col hidden">
 					<label for="dependencia">Ingresa tu dependencia</label>
 					<input type="text" class="form-control validate" id="dependencia" placeholder="">
 					<span class="input-success"></span>
 					<span class="input-error"></span>
 				</div>
-				<div class="form-group col-xs-12 col-md-5 col-md-offset-2 padding-dekstop-col">
-					<label for="percepciones">Percepciones libres</label>
-					<input type="tel" class="form-control validate" id="percepciones" placeholder="">
+				<div class="form-group col-xs-12 col-md-5 col-md-offset-1 padding-dekstop-col">
+					<label for="percepciones">Percepciones libres
+						<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Tooltip on right"></i>
+					</label>
+					<input type="tel" class="form-control validate input-number" id="percepciones" placeholder="">
 					<span class="input-success"></span>
 					<span class="input-error"></span>
 				</div>
-				<div class="col-xs-12 col-md-offset-2 padding-dekstop-col">
-					<a href="ofertas.html" class="btn btn-form">Solicitar</a>
+				<div class="col-xs-12 col-md-offset-1 padding-dekstop-col">
+					<button id="btnSolicitarOfertas" class="btn btn-form">Solicitar</button>
 				</div>
 			</div>
 
 		</div>
+
+		<div id="loader-ofertas-credito" class="row hidden">
+			<div class="sk-folding-cube">
+				<div class="sk-cube1 sk-cube"></div>
+				<div class="sk-cube2 sk-cube"></div>
+				<div class="sk-cube4 sk-cube"></div>
+				<div class="sk-cube3 sk-cube"></div>
+
+			</div>
+			<div class="center">
+				<span>Generando opciones de crédito</span>
+			</div>
+		</div>
+
+		<div id="ofertas-credito" class="hidden">
+
+			<h2 class="center">Tus opciones de crédito</h2>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-4 col-md-offset-4 center">
+					<div class="panel panel-border section-panel">
+						<div class="panel-heading">
+							<h6>La oferta más solicitada
+								<div class="pin">
+									<img src="img/icons/personal_credit_white.png" alt="">
+								</div>
+							</h6>
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<h3 class="oferta-principal">Préstamo</h3>
+								<p class="item-oferta-principal">$30,000</p>
+								<h3 class="oferta-principal">Períodos</h3>
+								<p class="item-oferta-principal red">22 quincenas</p>
+								<p class="item-quincena">$177.14</p>
+								<button class="btn btn-form choose-credit">Elegir</button>
+							</div>
+						</div>
+					</div>
+
+					<div><button id="btn-mas-ofertas" class="btn-link">Ver todas las ofertas</button></div>
+				</div>
+			</div>
+
+			<section id="todas-ofertas" class="ofertas hidden">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-border section-panel">
+		          <div class="panel-body">
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+								<div class="oferta-list">
+									<div class="col-md-1">
+										<p class="title-ofertas">Préstamo</p>
+										<p class="cantidad-ofertas">$30,000</p>
+									</div>
+									<div class="col-md-11">
+
+										<div class="col-md-2">
+											<p class="title-ofertas red">22 quincenas</p>
+											<p class="cantidad-ofertas">$$300</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">20 quincenas</p>
+											<p class="cantidad-ofertas">$196</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">18 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">16 quincenas</p>
+											<p class="cantidad-ofertas">$243</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">14 quincenas</p>
+											<p class="cantidad-ofertas">$270</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+										<div class="col-md-2">
+											<p class="title-ofertas">12 quincenas</p>
+											<p class="cantidad-ofertas">$100</p>
+											<button class="btn btn-form btn-oferta-list choose-credit">Solicitar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="hidden" id="datos-basicos">
+				<div class="row">
+
+					<div class="center">
+						<p>Necesitamos algunos datos para continuar tu solicitud</p>
+					</div>
+
+					<div class="col-xs-12">
+						<div class="form-group col-xs-12 col-md-4 col-md-offset-2 padding-dekstop-col">
+							<label for="nombre">Nombre</label>
+							<input type="text" class="form-control validate" id="nombre" placeholder="">
+							<span class="input-success"></span>
+							<span class="input-error"></span>
+						</div>
+						<div class="form-group col-xs-12 col-md-4 padding-dekstop-col">
+							<label for="celular">Celular</label>
+							<input type="tel" class="form-control validate" id="celular" placeholder="">
+							<span class="input-success"></span>
+							<span class="input-error"></span>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group col-xs-12 col-md-4 col-md-offset-2 padding-dekstop-col">
+							<label for="email">Correo electrónico</label>
+							<input type="tel" class="form-control validate" id="email" placeholder="">
+							<span class="input-success"></span>
+							<span class="input-error"></span>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div id="loader-phone-message" class="row hidden">
+						<div class="sk-folding-cube">
+							<div class="sk-cube1 sk-cube"></div>
+							<div class="sk-cube2 sk-cube"></div>
+							<div class="sk-cube4 sk-cube"></div>
+							<div class="sk-cube3 sk-cube"></div>
+
+						</div>
+						<div class="center">
+							<span>Enviando mensaje SMS</span>
+						</div>
+					</div>
+					<div class="col-xs-12 alert-div">
+
+						<div id="phone-message-alert" class="alert alert-info alert-dismissible hidden" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<i class="fa fa-info-circle"></i> Hemos enviado un código SMS a tu celular, si no lo recibes en 15 segundos, puede que el número ingresado no este correcto
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-12 code-submit">
+						<h1 class="title-section">Ingresar código SMS</h1>
+						<input type="tel" class="code-input" maxlength="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+						<input type="tel" class="code-input" maxlength="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+						<input type="tel" class="code-input" maxlength="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+						<input type="tel" class="code-input" maxlength="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+						<input type="tel" class="code-input" maxlength="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-xs-12 center">
+						<a id="btnContinuarSolicitud" href="solicitud.html" class="btn btn-form hidden">Solicitar</a>
+					</div>
+				</div>
+		</section>
 
 	</div>
 

@@ -403,7 +403,7 @@ input.invalid {
 select.form-control {
   display: inline-block;
   border: 0;
-  box-shadow: 0px 3px 4px #e8e8e8; }
+  box-shadow: 0 3px 4px #e8e8e8; }
 
 .filter-bar .form-group span {
   display: inline-block; }
@@ -413,6 +413,9 @@ select.form-control {
 
 .date-search {
   margin: 0 20px; }
+
+.form-group .fa {
+  color: #f68d1f; }
 
 .btn-form {
   color: white;
@@ -432,8 +435,8 @@ select.form-control {
 
 .btn-red-outline {
   background: #fff;
-  color: #f68d1f;
-  border: 1px solid #f68d1f; }
+  color: #ea5455;
+  border: 1px solid #ea5455; }
 
 .btn-grey {
   background-color: #ddd; }
@@ -596,6 +599,12 @@ a[aria-expanded="false"] + span {
 .btn-oferta-list {
   margin-bottom: 18px; }
 
+.pin {
+  color: #fff; }
+
+.pin img {
+  height: 68px; }
+
 .swiper-container {
   width: 100%;
   margin: 20px auto; }
@@ -708,9 +717,9 @@ a[aria-expanded="false"] + span {
   .verify-list i {
     float: right; }
   .verify-list .fa-check-circle {
-    color: #0066ad; }
+    color: #97c83d; }
   .verify-list .fa-times-circle {
-    color: #f68d1f; }
+    color: #ea5455; }
 
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -838,6 +847,9 @@ body {
   font-size: 2em;
   color: #0066ad; }
 
+.alert-div {
+  padding: 25px 0; }
+
 /* importamos responsive al final */
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (min-width: 801px) {
@@ -856,7 +868,7 @@ body {
     margin-right: 0;
     margin-left: 25px; }
   .navbar {
-    color: white;
+    color: #333;
     background-color: #fcfbfb;
     box-shadow: 0 4px 2px -2px #ccc;
     border: 0; }
