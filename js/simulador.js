@@ -236,12 +236,12 @@ function NumeroALetras(num) {
 
 // Dinerito
 
-const percepciones = $('#percepciones')
-percepciones.on('keyup', function(){
+var percepcionesInput = $('#percepciones')
+percepcionesInput.on('keyup', function(){
   $(this).next('.input-success').text(jsUcfirst(NumeroALetras(this.value).toLowerCase()))
 
 })
-percepciones.on('change', formatCurrency)
+percepcionesInput.on('change', formatCurrency)
 
 let inputsSolicitud = $('input')
 cargaEventosInputs(inputsSolicitud)
@@ -279,13 +279,13 @@ function cargaEventosInputs (inputsSolicitud) {
 
 }
 const optsDependencias = $("input[name='dependencia']")
-const otraDependencia = $("#otraDependencia")
+const otraDependenciaElegida = $("#otraDependencia")
 
 optsDependencias.each(function() {
   let input = $(this)
   input.change(function(){
     if(input.val() == 'otra'){
-      otraDependencia.removeClass('hidden')
+      otraDependenciaElegida.removeClass('hidden')
       inputsSolicitud = $('input')
       cargaEventosInputs(inputsSolicitud)
     }
@@ -295,13 +295,13 @@ optsDependencias.each(function() {
 
 $('[data-toggle="tooltip"]').tooltip()
 
-const btnSolicitarOfertas = $('#btnSolicitarOfertas')
-btnSolicitarOfertas.on('click', function() {
+const btnSolicitaOfertas = $('#btnSolicitarOfertas')
+btnSolicitaOfertas.on('click', function() {
   $('#loader-ofertas-credito').removeClass('hidden')
   setTimeout(function() {
     $('#loader-ofertas-credito').addClass('hidden')
     $('#ofertas-credito').removeClass('hidden')
-    btnSolicitarOfertas.addClass('hidden')
+    btnSolicitaOfertas.addClass('hidden')
   }, 4000);
 })
 

@@ -95,31 +95,14 @@ const validateInputs = function (inputs) {
 
 /** Formulario Solicitud **/
 // agrego evento para manejar la clase valid de cada input y poner su valor debajo
-const inputsSolicitud = $('#formDatosPersonales input')
+const inputsSolicitud = $('input')
+
 inputsSolicitud.each(function() {
   let input = $(this)
   input.change(function() {
     if (input.val() !== '') {
-      if (input.attr('id') === 'celular') { // pregunto cuando sea el campo del celular
-        let regex = /^\(?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-        if (regex.test(input.val())) { // valido el telefono
-          $('#loader-phone-message').removeClass('hidden') // si pasa se muestra loader
-
-          // aqui se enviaria el mensaje, solo se simula un periodo de tiempo
-          setTimeout(function() {
-            $('#loader-phone-message').addClass('hidden')
-            $('#phone-message-alert').removeClass('hidden')
-          }, 4000);
-
-        } else {
-          input.siblings('.input-error').html('No es un número de teléfono válido');
-          input.addClass('invalid')
-        }
-      } else {
-
         input.addClass('valid')
         input.siblings('.input-success').html(input.val());
-      }
     }
   })
 })
