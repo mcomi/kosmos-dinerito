@@ -117,6 +117,9 @@ h3.oferta-principal {
 .indexcity {
   z-index: 9999; }
 
+.fade.right {
+  right: 0 !important; }
+
 .right {
   right: 170px !important; }
 
@@ -323,6 +326,9 @@ label.icon-label span {
   right: 35px;
   top: 12px;
   margin: -20px 0 0 -20px; }
+
+.menu_credit_type .col-xs-6 {
+  min-height: 120px; }
 
 input[type=checkbox] {
   visibility: hidden; }
@@ -566,6 +572,9 @@ a[aria-expanded="false"] + span {
 .home .panel-heading {
   border-bottom: 1px solid #ddd; }
 
+.home .panel-collapsed .panel-heading {
+  border-bottom: 0; }
+
 .home .panel-heading a {
   float: right;
   color: #0066ad; }
@@ -600,7 +609,8 @@ a[aria-expanded="false"] + span {
   color: #ddd; }
 
 .btn-oferta-list {
-  margin-bottom: 18px; }
+  margin-top: 12px;
+  display: block; }
 
 .pin {
   color: #fff; }
@@ -742,6 +752,36 @@ td a {
 .right {
   text-align: right; }
 
+.table.ofertas-table > thead > tr > th {
+  vertical-align: bottom;
+  color: #0066ad;
+  border: 0;
+  font-size: 14px;
+  padding: 0 0 8px 8px; }
+
+.table.ofertas-table > tbody > tr > td {
+  border: 0;
+  font-size: 14px;
+  color: #0066ad;
+  padding-left: 20px; }
+
+.table-responsive > .fixed-column {
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  border-radius: 3px 3px 0 0; }
+
+.table-responsive {
+  border: 0; }
+
+.first-column {
+  width: 90px; }
+
+.table.ofertas-table > thead > tr > th.title-ofertas {
+  padding-left: 20px; }
+
 body {
   background-color: #fff;
   font-family: 'Raleway', sans-serif;
@@ -752,7 +792,8 @@ body {
   min-height: 100%; }
 
 .container {
-  padding-top: 80px; }
+  padding-top: 80px;
+  padding-bottom: 20px; }
 
 .footer {
   position: fixed;
@@ -928,11 +969,11 @@ body {
   .icon-item.option {
     width: 50px;
     height: 50px;
-    padding: 10px 10px !important; }
+    padding: 10px !important; }
   .icon-item.option svg {
     height: 30px; }
   label.icon-label span {
-    padding-left: 0px; }
+    padding-left: 0; }
   .sidebar-header p,
   .sidebar-header-profilepic {
     display: none; }
@@ -1032,6 +1073,14 @@ body {
     width: 64px;
     height: 64px; }
   .chart-row {
-    padding-top: 40px; } }
+    padding-top: 40px; }
+  span.clickable {
+    display: none; }
+  .table-responsive > .fixed-column {
+    display: none; }
+  .table.ofertas-table > tbody > tr > td {
+    padding-left: 0; }
+  .table.ofertas-table > thead > tr > th.title-ofertas {
+    padding-left: 0; } }
 
 /*# sourceMappingURL=style.css.map */
