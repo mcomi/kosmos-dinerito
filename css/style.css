@@ -621,6 +621,9 @@ a[aria-expanded="false"] + span {
 #optionsIdPhoto label {
   display: block; }
 
+.only-desktop {
+  display: none; }
+
 .swiper-container {
   width: 100%;
   margin: 20px auto; }
@@ -1108,6 +1111,10 @@ body {
     padding-left: 0; }
   .modal-dialog {
     width: 87%;
-    margin-left: 10%; } }
+    margin-left: 10%; }
+  .only-mobile {
+    display: none; }
+  .only-desktop {
+    display: block; } }
 
 /*# sourceMappingURL=style.css.map */

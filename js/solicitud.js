@@ -208,6 +208,30 @@ $("input[name='tarjeta_credito']").click(function() {
   }
 });
 
+var inputsFile = document.querySelectorAll( '.input-file' );
+
+inputsFile.forEach(input=>{
+  input.addEventListener( 'change', function( e ){
+    $('#loader-files').removeClass('hidden')
+    setTimeout(function(){
+      $('#loader-files').addClass('hidden')
+    }, 3500)
+    // var fileName = '';
+		// if( this.files && this.files.length > 1 )
+		// 	fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+		// else
+		// 	fileName = e.target.value.split( '\\' ).pop();
+    //
+		// if( fileName )
+		// 	label.querySelector( 'span' ).innerHTML = fileName;
+		// else
+		// 	label.innerHTML = labelVal;
+  })
+})
+
+
+
+
 
 const panelActiveWebcam = $('#panel-webcam')
 panelActiveWebcam.click(function(){
