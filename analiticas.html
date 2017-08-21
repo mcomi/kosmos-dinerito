@@ -6,7 +6,7 @@
 	<meta name="description" content="bx+ using webpack and bootstrap">
 	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, maximum-scale=1">
 
-	<title>Dinerito - Estatus de solicitud</title>
+	<title>Dinerito - Analíticas</title>
 
 	<!-- Disable tap highlight on IE -->
 	<meta name="msapplication-tap-highlight" content="no">
@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <link rel="stylesheet" href="css/bootstrap-table.min.css">
   <link rel="stylesheet" href="css/style.css">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -83,7 +82,7 @@
 
 </div> -->
 	<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<!--Include your brand here-->
 
@@ -127,25 +126,120 @@
 		</div>
 		<!-- /.container-fluid -->
 	</div>
-	<div class="container home">
-    <div class="row">
-      <h1 class="title-section">Simulador Hipotecario</h1>
+	<div id="analiticas-solicitud" class="container">
+
+		<div class="row">
 
 
-			<div class="col-xs-12 center">
-				<h5 class="status">Status</h5>
-        <p>Los documentos fueron rechazados</p>
-        <span>"La calidad de imagen no es legible"</span>
-        <div class="center padding-btns">
+			<div class="col-xs-12">
+				<h3 class="section-header-home">
+					ANALÍTICAS
+				</h3>
 
-          <button class="btn btn-form">Enviar</button>
-        </div>
-        <div class="center padding-btns">
-
-          <a href="# padding-btns" class="btn btn-form btn-grey">Volver al inicio</a>
-        </div>
+			</div>
+			<div class="col-xs-12 scrollmenu">
+				<a href="#estadisticas">Estadísticas</a>
+				<a href="#producto">Analíticas Producto</a>
+				<a href="#indices">Índices</a>
+				<a href="#eficiencia">Eficiencia</a>
 			</div>
     </div>
+
+		<div id="estadisticas" class="row">
+			<div class="col-xs-12 col-md-12">
+				<h3 class="section-header">GRÁFICA</h3>
+			</div>
+			<div class="col-xs-12 col-md-12">
+        <div class="panel panel-border section-panel">
+					<div class="panel-body">
+						<canvas id="grafica" height="100"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div id="producto">
+			<div class="row">
+
+				<div class="col-xs-12 col-md-6">
+					<h3 id="capacidad" class="section-header">Estatus</h3>
+					<div class="panel panel-border section-panel">
+						<div class="panel-body">
+							<canvas id="estatus" height="150"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h3 class="section-header">Productos</h3>
+					<div class="panel panel-border section-panel">
+						<div class="panel-body">
+							<canvas id="producto-chart" height="150"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h3 class="section-header">Puntos de Venta</h3>
+					<div class="panel panel-border section-panel">
+						<div class="panel-body">
+							<canvas id="puntos_venta" height="150"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h3 class="section-header">Origen</h3>
+					<div class="panel panel-border section-panel">
+						<div class="panel-body">
+							<canvas id="origen" height="150"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<h3  id="documentacion" class="section-header">% DE CONVERSIÓN</h3>
+
+				<p class="verify-list">SATELITE<span>23<span></p>
+				<p class="verify-list">COYOACÁN de domicilio<span>46<span></p>
+				<p class="verify-list">CENTRO<span>16<span></p>
+				<p class="verify-list">ROMA<span>14<span></p>
+				<p class="verify-list">CONDESA<span>45<span></p>
+				<p class="verify-list">POLANCO<span>11<span></p>
+
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<h3  id="documentacion" class="section-header">VOL DE TRANSACCIONES</h3>
+
+				<p class="verify-list">SATELITE<span>23<span></p>
+				<p class="verify-list">COYOACÁN de domicilio<span>46<span></p>
+				<p class="verify-list">CENTRO<span>16<span></p>
+				<p class="verify-list">ROMA<span>14<span></p>
+				<p class="verify-list">CONDESA<span>45<span></p>
+				<p class="verify-list">POLANCO<span>11<span></p>
+
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<h3  id="documentacion" class="section-header">MEDIANA DE TIEMPO</h3>
+
+				<p class="verify-list">SATELITE<span>23<span></p>
+				<p class="verify-list">COYOACÁN de domicilio<span>46<span></p>
+				<p class="verify-list">CENTRO<span>16<span></p>
+				<p class="verify-list">ROMA<span>14<span></p>
+				<p class="verify-list">CONDESA<span>45<span></p>
+				<p class="verify-list">POLANCO<span>11<span></p>
+
+			</div>
+		</div>
+
 
 	</div>
 
@@ -184,7 +278,6 @@
   <script src="libs/bootstrap-datepicker.min.js"></script>
   <script src="libs/bootstrap-datepicker.es.min.js"></script>
   <script src="libs/bootstrap-editable.min.js"></script>
-  <script src="libs/bootstrap-table.min.js"></script>
   <script src="libs/cleave.min.js"></script>
   <script src="libs/cleave-phone.mx.js"></script>
   <script src="libs/swiper.min.js"></script>
@@ -193,7 +286,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/es.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
-  <script src="js/index.js"></script>
+	<script src="js/index.js"></script>
+  <script src="js/analiticas.js"></script>
+
 
 </body>
 

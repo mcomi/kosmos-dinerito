@@ -9,13 +9,12 @@ inputsText.forEach(input => input.addEventListener('change', function() {
 }))
 
 
-
 //Navigation Menu Slider
 $('#nav-expander').on('click', function(e) {
   e.preventDefault();
   $('body').toggleClass('nav-expanded');
 });
-$('.open-menu i').on('click', function(e) {
+$('.open-menu .btn').on('click', function(e) {
   e.preventDefault();
   $('body').toggleClass('nav-expanded');
 });
