@@ -350,13 +350,23 @@ btnMasOfertas.on('click', function() {
   // cachar el evento cuando deslizan el slider y actualizar el monto del input
   $("#slider-monto").on("change", function() {
   	$("#input-monto").val(this.value);
-
+    montoQuincena = parseInt(this.value)/parseInt($('#periodo').val())  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
+    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
   });
-
+  // cachar el evento cuando actualizan el monto del input y actualizar el valor en el slider
   $("#input-monto").on("keyup", function() {
   	$("#slider-monto").slider('setValue', parseInt(this.value))
-
+    montoQuincena = parseInt(this.value)/parseInt($('#periodo').val())  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
+    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
   });
+
+  $('#periodo').on("change", function() {
+    montoQuincena = parseInt($('#input-monto').val())/parseInt(this.value)  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
+    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+  });
+
+
+  btnMasOfertas.addClass('hidden')
 
   // $('#todas-ofertas').removeClass('hidden')
   // btnMasOfertas.addClass('hidden')
