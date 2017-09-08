@@ -2,6 +2,8 @@ $.fn.exists = function() {
   return this.length > 0;
 }
 
+
+
 function Unidades(num) {
   switch (num) {
     case 1:
@@ -252,8 +254,9 @@ function cargaEventosInputs (inputsSolicitud) {
     input.change(function() {
       if (input.val() !== '') {
         if (input.attr('id') === 'celular') { // pregunto cuando sea el campo del celular
-          let regex = /^\(?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-          if (regex.test(input.val())) { // valido el telefono
+          var celDiezDigitos = input.val().replace(/\s/g,'')
+          let regex = /^\d{10}$/;
+          if (regex.test(celDiezDigitos)) { // valido el telefono
             $('#loader-phone-message').removeClass('hidden') // si pasa se muestra loader
 
             // aqui se enviaria el mensaje, solo se simula un periodo de tiempo
@@ -261,12 +264,31 @@ function cargaEventosInputs (inputsSolicitud) {
               $('#loader-phone-message').addClass('hidden')
               $('#phone-message-alert').removeClass('hidden')
             }, 4000);
+            input.siblings('.input-error').html('');
+            if(input.hasClass('invalid')){
+              input.removeClass('invalid')
+            }
             input.siblings('.input-success').html(input.val());
           } else {
             input.siblings('.input-error').html('No es un número de teléfono válido');
             input.addClass('invalid')
           }
-        } else {
+        }
+        else if (input.attr('id') === 'email'){
+          if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input.val())){
+            input.siblings('.input-error').html('');
+            if(input.hasClass('invalid')){
+              input.removeClass('invalid')
+            }
+            input.siblings('.input-success').html(input.val());
+          }else {
+
+            input.siblings('.input-error').html('No es un correo electrónico válido');
+            input.addClass('invalid')
+          }
+
+        }
+        else {
 
           input.addClass('valid')
           if(!input.hasClass('input-number')){
@@ -307,16 +329,45 @@ btnSolicitaOfertas.on('click', function() {
 
 const btnMasOfertas = $('#btn-mas-ofertas')
 btnMasOfertas.on('click', function() {
-  $('#todas-ofertas').removeClass('hidden')
-  btnMasOfertas.addClass('hidden')
-  var $table = $('.table');
-  var $fixedColumn = $table.clone().insertBefore($table).addClass('fixed-column');
+  let monto = $('#monto-opcion-credito').text().replace( /^\D+/g, '').replace(/,/g, '')
+  $('#monto-opcion-credito').addClass('hidden')
+  let periodo = $('#periodo-opcion-credito').val()
+  $('#periodo-opcion-credito').addClass('hidden')
+  $('#cambia-monto-oferta').removeClass('hidden')
+  $('#cambia-periodo-oferta').removeClass('hidden')
 
-  $fixedColumn.find('th:not(:first-child),td:not(:first-child)').remove();
-
-  $fixedColumn.find('tr').each(function (i, elem) {
-      $(this).height($table.find('tr:eq(' + i + ')').height());
+  $("#slider-monto").slider({
+    min: 0, // declarar el monto minimo
+    max: 1000000, // declarar el monto maximo
+    value: parseInt(monto), // asigno el monto de la mejor oferta al slider
+    step: 10000, // si se quiere determinar un numero en suma o resta para cada movimiento del slider, ej: del monto ira +-  10000
+    tooltip: 'always' // muestra el valor en el slider
   });
+  $('#input-monto').val(monto);
+  var montoQuincena = parseInt(monto)/parseInt($('#periodo').val())
+  $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+
+  // cachar el evento cuando deslizan el slider y actualizar el monto del input
+  $("#slider-monto").on("change", function() {
+  	$("#input-monto").val(this.value);
+
+  });
+
+  $("#input-monto").on("keyup", function() {
+  	$("#slider-monto").slider('setValue', parseInt(this.value))
+
+  });
+
+  // $('#todas-ofertas').removeClass('hidden')
+  // btnMasOfertas.addClass('hidden')
+  // var $table = $('.table');
+  // var $fixedColumn = $table.clone().insertBefore($table).addClass('fixed-column');
+  //
+  // $fixedColumn.find('th:not(:first-child),td:not(:first-child)').remove();
+  //
+  // $fixedColumn.find('tr').each(function (i, elem) {
+  //     $(this).height($table.find('tr:eq(' + i + ')').height());
+  // });
 })
 
 const btnsEligeOferta = $('.choose-credit')

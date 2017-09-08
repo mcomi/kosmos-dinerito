@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" />
   <link rel="stylesheet" href="css/style.css">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -248,16 +249,31 @@
 						<div class="panel-body">
 							<div class="col-md-12">
 								<h3 class="oferta-principal">Préstamo</h3>
-								<p class="item-oferta-principal" class="first-column">$30,000</p>
+								<div id="cambia-monto-oferta" class="hidden">
+									<input id="input-monto" type="text" class="form-control">
+									<input id="slider-monto" type="text" />
+								</div>
+								<p id="monto-opcion-credito" class="item-oferta-principal" class="first-column">$30,000</p>
 								<h3 class="oferta-principal">Períodos</h3>
-								<p class="item-oferta-principal red">22 quincenas</p>
-								<p class="item-quincena">$177.14</p>
-								<button class="btn btn-form choose-credit">Elegir</button>
+								<div id="cambia-periodo-oferta" class="hidden">
+									<div class="form-group col-xs-12 padding-dekstop-col">
+										<select class="form-control" id="periodo" placeholder="">
+										<option value="22">22 quincenas</option>
+										<option value="20">20 quincenas</option>
+										<option value="18">18 quincenas</option>
+										<option value="16">16 quincenas</option>
+										<option value="14">14 quincenas</option>
+										<option value="12">12 quincenas</option>
+									</select>
+								</div>
 							</div>
+							<p id="periodo-opcion-credito" class="item-oferta-principal red">22 quincenas</p>
+							<p id="monto-quincena" class="item-quincena">$177.14</p>
+							<button class="btn btn-form choose-credit">Elegir</button>
 						</div>
 					</div>
 
-					<div><button id="btn-mas-ofertas" class="btn-link">Ver todas las ofertas</button></div>
+					<div><button id="btn-mas-ofertas" class="btn-link">Modificar oferta</button></div>
 				</div>
 			</div>
 
@@ -524,6 +540,7 @@
   <script src="libs/bootstrap-datepicker.min.js"></script>
   <script src="libs/bootstrap-datepicker.es.min.js"></script>
   <script src="libs/bootstrap-editable.min.js"></script>
+	<script src="libs/bootstrap-slider.js"></script>
   <script src="libs/cleave.min.js"></script>
   <script src="libs/cleave-phone.mx.js"></script>
   <script src="libs/swiper.min.js"></script>

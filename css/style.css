@@ -1089,6 +1089,10 @@ body {
     text-align: center; }
   .nav-expanded .main-menu li a span.menu-text {
     display: block; }
+  .nav-expanded span.icon {
+    text-align: center; }
+  .nav-expanded span.icon img {
+    padding: 0 !important; }
   .nav-expanded .main-menu li a > span.icon img {
     float: none; }
   .nav-expanded span.icon img {
