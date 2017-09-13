@@ -335,34 +335,45 @@ btnMasOfertas.on('click', function() {
   $('#periodo-opcion-credito').addClass('hidden')
   $('#cambia-monto-oferta').removeClass('hidden')
   $('#cambia-periodo-oferta').removeClass('hidden')
-
+  let monto_maximo = 1000000 // lo asignamos aqui para validar cuando se pase de este monto en el input
   $("#slider-monto").slider({
     min: 0, // declarar el monto minimo
-    max: 1000000, // declarar el monto maximo
+    max: monto_maximo, // declarar el monto maximo
     value: parseInt(monto), // asigno el monto de la mejor oferta al slider
     step: 10000, // si se quiere determinar un numero en suma o resta para cada movimiento del slider, ej: del monto ira +-  10000
     tooltip: 'always' // muestra el valor en el slider
   });
   $('#input-monto').val(monto);
   var montoQuincena = parseInt(monto)/parseInt($('#periodo').val())
-  $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+
+  $('#monto-quincena').text('$'+formatCurrencyOfNumber(montoQuincena.toFixed(2)))
 
   // cachar el evento cuando deslizan el slider y actualizar el monto del input
   $("#slider-monto").on("change", function() {
   	$("#input-monto").val(this.value);
     montoQuincena = parseInt(this.value)/parseInt($('#periodo').val())  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
-    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+    $('#monto-quincena').text('$'+formatCurrencyOfNumber(montoQuincena.toFixed(2)))
   });
   // cachar el evento cuando actualizan el monto del input y actualizar el valor en el slider
   $("#input-monto").on("keyup", function() {
-  	$("#slider-monto").slider('setValue', parseInt(this.value))
-    montoQuincena = parseInt(this.value)/parseInt($('#periodo').val())  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
-    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+    let valorInput = this.value
+    if(parseInt(valorInput) > monto_maximo){
+      $(this).next('.input-error').html('Su monto máximo disponible es de  $'+formatCurrencyOfNumber(monto_maximo.toFixed(2)));
+      $(this).val(monto_maximo)
+      valorInput = monto_maximo
+      $("#slider-monto").slider('setValue', parseInt(valorInput))
+      montoQuincena = parseInt(valorInput)/parseInt($('#periodo').val())
+      return
+    }
+    $(this).next('.input-error').html('')
+  	$("#slider-monto").slider('setValue', parseInt(valorInput))
+    montoQuincena = parseInt(valorInput)/parseInt($('#periodo').val())  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
+    $('#monto-quincena').text('$'+formatCurrencyOfNumber(montoQuincena.toFixed(2)))
   });
 
   $('#periodo').on("change", function() {
     montoQuincena = parseInt($('#input-monto').val())/parseInt(this.value)  // no tengo claro si este es el calculo pero aqui se puede cambiar la operacion
-    $('#monto-quincena').text(parseFloat(montoQuincena.toFixed(2)))
+    $('#monto-quincena').text('$'+formatCurrencyOfNumber(montoQuincena.toFixed(2)))
   });
 
 
