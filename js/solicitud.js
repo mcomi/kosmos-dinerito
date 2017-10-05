@@ -1,12 +1,12 @@
 
 $(function() {
 
-  $.fn.editable.defaults.mode = 'inline';
-  $('#username').editable();
+$('#fecha_para').datepicker({
+    language: "es"
 });
-
-$('#fecha_nac').combodate();
-$('#fecha_nac_ca').combodate();
+$('#fecha_de').datepicker({
+    language: "es"
+});
 
 $.fn.exists = function() {
   return this.length > 0;
