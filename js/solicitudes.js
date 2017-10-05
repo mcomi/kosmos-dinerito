@@ -1,6 +1,9 @@
-
-$('#fecha_para').combodate();
-$('#fecha_de').combodate();
+$('#fecha_para').datepicker({
+    language: "es"
+});
+$('#fecha_de').datepicker({
+    language: "es"
+});
 
 
 $('#date-filter').click(function(e) {
